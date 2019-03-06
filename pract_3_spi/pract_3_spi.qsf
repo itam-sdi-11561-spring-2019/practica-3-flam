@@ -78,4 +78,6 @@ set_location_assignment PIN_M1 -to dip_sw[0]
 set_location_assignment PIN_T8 -to dip_sw[1]
 set_location_assignment PIN_B9 -to dip_sw[2]
 set_location_assignment PIN_M15 -to dip_sw[3]
+set_location_assignment PIN_D3 -to MOTOR_OUT[0]
+set_location_assignment PIN_C3 -to MOTOR_OUT[1]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

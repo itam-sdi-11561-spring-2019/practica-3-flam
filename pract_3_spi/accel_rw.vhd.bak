@@ -89,16 +89,16 @@ begin
 		clock   => CLK,                              --system clock
 		reset_n => reset_n,                          --asynchronous reset
 		enable  => enable ,                          --initiate transaction
-		cpol    => '1',                                 --spi clock polarity
-		cpha    => '1',                                 --spi clock phase
-		clk_div => 5,                                 --system clock cycles per 1/2 period of sclk
-		addr    => 0,                                 --address of slave
+		cpol    => ,                                 --spi clock polarity
+		cpha    => ,                                 --spi clock phase
+		clk_div => ,                                 --system clock cycles per 1/2 period of sclk
+		addr    => ,                                 --address of slave
 		rw      => rw_buffer	,                    --'0' for read, '1' for write
 		tx_cmd  => cmd_to_spi, 			     --command to transmit
 		tx_data => TX_IN,			     --data to transmit
-		sclk    => I2C_SCLK,				     --SPI SCLK
-		ss_n(0) => G_SENSOR_CS_N,				     --Sensor SSN
-		sdio    => I2C_SDAT,			             --SPI SDIO
+		sclk    => ,				     --SPI SCLK
+		ss_n(0) => ,				     --Sensor SSN
+		sdio    => ,			             --SPI SDIO
 		busy    => busy,			     --busy / data ready signal
 		rx_data => RX_out			     --data received
 	);

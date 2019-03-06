@@ -15,7 +15,6 @@ entity pract_3_spi is
 		btn_1 		: in 	 std_logic;
 		LEDS  		: out    std_logic_vector( 7 downto 0);
 		LEDS_OUT 	: out    std_logic_vector(15 downto 0);
-		MOTOR_OUT : out std_logic_vector(1 downto 0);
 		dip_sw 	 	: in     std_logic_vector( 3 downto 0)
 	);
 end pract_3_spi;
@@ -75,13 +74,10 @@ signal reg_to_check 	: std_logic_vector( 7 downto 0) := x"00";
 
 signal delay	 	: std_logic_vector(15 downto 0) := x"0000";
 
-signal out_motor : std_logic_vector(1 downto 0) := b"00";
-
 begin
 
 	LEDS <= leds_buffer;
 	LEDS_OUT <= leds_out_buffer;
-	MOTOR_OUT <= out_motor;
 
 	init_accel_inst1 : init_accel
 	port map
@@ -113,18 +109,18 @@ begin
 	
 	reg_to_check <= 
 		x"00" when dip_sw = "0000" else
-		x"32" when dip_sw = "0001" else
-		x"34" when dip_sw = "0010" else
+		x"00" when dip_sw = "0001" else
+		x"00" when dip_sw = "0010" else
 		x"00" when dip_sw = "0011" else
-		x"36" when dip_sw = "0100" else
+		x"00" when dip_sw = "0100" else
 		x"00" when dip_sw = "0101" else
 		x"00" when dip_sw = "0110" else
 		x"00" when dip_sw = "0111" else
 		x"00" when dip_sw = "1000" else
-		x"33" when dip_sw = "1001" else
-		x"35" when dip_sw = "1010" else 
+		x"00" when dip_sw = "1001" else
+		x"00" when dip_sw = "1010" else 
 		x"00" when dip_sw = "1011" else
-		x"37" when dip_sw = "1100" else
+		x"00" when dip_sw = "1100" else
 		x"00" when dip_sw = "1101" else
 		x"00" when dip_sw = "1110" else
 		x"00" when dip_sw = "1111" else	
@@ -210,14 +206,6 @@ begin
 						leds_out_buffer <= rx_data_buffer;
 						leds_buffer <= rx_data_buffer(15 downto 8);
 						state <= IDLE;
-						
-						if (leds_buffer(7) = '1') then
-							out_motor <= "01";
-						else
-							out_motor <= "10";
-						end if;
-						
-						
 					end if;
 				
       		END CASE;
